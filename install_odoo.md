@@ -1,12 +1,7 @@
 
-# Project Title
+# Install Odoo
 
-A brief description of what this project does and who it's for
-
-
-# Project Title
-
-A brief description of what this project does and who it's for
+This script helps user to install Odoo on server.
 
 
 ## Documentation
@@ -196,62 +191,18 @@ Psycopy3-binary
   pip install psycopg2-binary
 ```
 
-## Step 1
 ```bash
   sudo python3.8 -m pip install pyopenssl
 ```
 
-## Step 1
 ```bash
   python3.8 -m pip install PyPDF2==1.26.0
 ```
 
-## Step 1
 ```bash
   sudo python3.8 -m pip install -r requirements.txt
 ```
 
-## Step 1
 ```bash
-  sudo apt-get update
-```
-
-## Step 1
-```bash
-  sudo apt-get update
-```
-
-## Step 1
-```bash
-  sudo apt-get update
-```
-
-## Step 1
-```bash
-  sudo apt-get update
-```
-
-## Step 1
-```bash
-  sudo apt-get update
-```
-
-## Step 1
-```bash
-  sudo apt-get update
-```
-
-## Step 1
-```bash
-  sudo apt-get update
-```
-
-## Step 1
-```bash
-  sudo apt-get update
-```
-
-## Step 1
-```bash
-  sudo apt-get update
+  sudo python3.8 -m pip install Werkzeug==0.16.1
 ```
