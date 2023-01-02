@@ -100,6 +100,10 @@ Create Database user for Odoo
 ```
 
 ```bash
+  createuser -s odoo
+```
+
+```bash
   createuser -s ubuntu_user_name
 ```
 
@@ -126,6 +130,10 @@ Create Odoo Log File
 
 ```bash
   sudo apt-get update
+```
+
+```bash
+  sudo mkdir /var/log/odoo
 ```
 
 ```bash
