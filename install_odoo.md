@@ -1,7 +1,7 @@
 
 # 🛠 Install Odoo
 
-This script helps users to easily install Odoo on server.
+#### This script helps users to easily install Odoo on server.
 
 
 ## Documentation
@@ -10,36 +10,35 @@ This script helps users to easily install Odoo on server.
 
 
 ## Step 1
-
-
-Update apt source list
+##### Update apt source list
 
 ```bash
 sudo apt-get update
 ```
 
 ## Step 2
-Install Updates
+##### Install Updates
 
 ```bash
 sudo apt-get -y upgrade
 ```
 
 ## Step 3
-Install Python Dependencies for Odoo
+##### Install Python Dependencies for Odoo
 
 ```bash
 sudo apt install git python3-pip build-essential wget python3-dev python3-venv python3-wheel libxslt-dev libzip-dev libldap2-dev libsasl2-dev python3-setuptools node-less
 ```
 
-INSTALL DEPENDENCIES USING PIP3
+##### INSTALL DEPENDENCIES USING PIP3
+
 ```bash
 pip3 install Babel decorator docutils ebaysdk feedparser gevent greenlet html2text Jinja2 lxml Mako MarkupSafe mock num2words ofxparse passlib Pillow psutil psycogreen psycopg2 pydot pyparsing PyPDF2 pyserial python-dateutil python-openid pytz pyusb PyYAML qrcode reportlab requests six suds-jurko vatnumber vobject Werkzeug XlsxWriter xlwt xlrd
 ```
 
 ## Step 4
+##### Odoo Web Dependencies
 
-Odoo Web Dependencies
 ```bash
 sudo apt-get install -y npm
 ```
@@ -65,7 +64,7 @@ sudo python3 -m pip install libsass
 ```
 
 ## Step 5
-Install PostgreSQL 
+##### Install PostgreSQL 
 
 ```bash
 sudo apt-get install python3-software-properties
@@ -89,7 +88,7 @@ sudo apt-get -y install postgresql-12
 ```
 
 ## Step 6
-Create Database user for Odoo
+##### Create Database user for Odoo
 
 ```bash
 sudo su postgres
@@ -112,21 +111,21 @@ exit
 ```
 
 ## Step 7
-
-Create Odoo user and group
+##### Create Odoo user and group
 
 ```bash
 sudo adduser --system --home=/opt/odoo --group odoo
 ```
 
 ## Step 8
-Clone Odoo Branch
+##### Clone Odoo Branch (Replace 16.0 with specific branch that you wants to clone)
+
 ```bash
 git clone https://www.github.com/odoo/odoo --depth 1 --branch 16.0 --single-branch
 ```
 
 ## Step 9
-Create Odoo Log File
+##### Create Odoo Log File
 
 ```bash
 sudo apt-get update
@@ -141,14 +140,14 @@ sudo chown -R odoo:root /var/log/odoo
 ```
 
 ## Step 10
-Edit Odoo configuration file
+##### Edit Odoo configuration file
 
 ```bash
 sudo gedit /etc/odoo.conf
 ```
-## Step 11
 
-Copy and paste below content in config file , write correct addons paths
+## Step 11
+##### Copy and paste below content in config file , write correct addons paths
 
 ```bash
 [options]
@@ -168,14 +167,14 @@ db_password = False
 logfile = /var/log/odoo/odoo-server.log
 ```
 
-Save and Exit the file. Now run the below command on terminal to grant ownership.
+##### Save and Exit the file. Now run the below command on terminal to grant ownership.
 ```bash
 sudo chown odoo: /etc/odoo.conf
 ```
 
 ## Step 12
+##### Install WKHTMLTOPDF
 
-Install WKHTMLTOPDF
 ```bash
 sudo wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.bionic_amd64.deb
 ```
@@ -194,7 +193,6 @@ sudo cp /usr/local/bin/wkhtmltopdf  /usr/bin/wkhtmltopdf
 
 #### Install Missing Packages
 
-Psycopg2
 ```bash
 pip install psycopg2-binary
 ```
@@ -211,7 +209,7 @@ python3.8 -m pip install PyPDF2==1.26.0
 sudo python3.8 -m pip install -r requirements.txt
 ```
 
-Check Werkzeug Version
+##### Check Werkzeug Version
 ```bash
 pip freeze | grep Werkzeug
 ```
@@ -220,7 +218,7 @@ pip freeze | grep Werkzeug
 sudo python3.8 -m pip install Werkzeug==0.16.1
 ```
 
-## Start odoo
+## 🚀 Lunch Odoo
 ```bash
 http://localhost:8069
 ```
