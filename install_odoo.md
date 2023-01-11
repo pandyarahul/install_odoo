@@ -191,7 +191,12 @@ sudo cp /usr/local/bin/wkhtmltoimage  /usr/bin/wkhtmltoimage
 sudo cp /usr/local/bin/wkhtmltopdf  /usr/bin/wkhtmltopdf
 ```
 
-#### Install Missing Packages
+## 🚀 Lunch Odoo
+```bash
+http://localhost:8069
+```
+
+### Install Missing Packages
 
 ```bash
 pip install psycopg2-binary
@@ -218,7 +223,16 @@ pip freeze | grep Werkzeug
 sudo python3.8 -m pip install Werkzeug==0.16.1
 ```
 
-## 🚀 Lunch Odoo
-```bash
-http://localhost:8069
-```
+## Support
+
+For support, email hello.rahul@aol.com 😊
+
+## Authors
+
+- [@pandyarahul](https://github.com/pandyarahul)
+
+
+## 🔗 Links
+[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://pandyarahul.odoo.com/)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/pandyarahul/)
+[![twitter](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/pandyarahul4u/)
