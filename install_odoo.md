@@ -191,7 +191,7 @@ sudo cp /usr/local/bin/wkhtmltoimage  /usr/bin/wkhtmltoimage
 sudo cp /usr/local/bin/wkhtmltopdf  /usr/bin/wkhtmltopdf
 ```
 
-## 🚀 Lunch Odoo
+# 🚀 Launch Odoo
 ```bash
 http://localhost:8069
 ```
