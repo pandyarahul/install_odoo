@@ -214,6 +214,10 @@ python3.8 -m pip install PyPDF2==1.26.0
 sudo python3.8 -m pip install -r requirements.txt
 ```
 
+```bash
+sudo python3 -m pip install --upgrade --force-reinstall -r requirements.txt
+```
+
 ##### Check Werkzeug Version
 ```bash
 pip freeze | grep Werkzeug
