@@ -227,6 +227,11 @@ pip freeze | grep Werkzeug
 sudo python3.8 -m pip install Werkzeug==0.16.1
 ```
 
+##### CSS Style Error
+```bash
+pip3 install libsass==0.17.0
+```
+
 ## Support
 
 For support, email hello.rahul@aol.com 😊
