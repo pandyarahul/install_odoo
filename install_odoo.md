@@ -6,7 +6,7 @@
 
 ## Documentation
 
-[Documentation](https://www.getopenerp.com/install-odoo-12-on-ubuntu-18-04/)
+[Documentation](https://www.getopenerp.com/install-odoo-12-on-ubuntu-18-04/), If you wants to create and run Odoo with service file check this [Documentation](https://www.cybrosys.com/blog/how-to-install-odoo-16-on-ubuntu-2004-lts)
 
 
 ## Step 1
@@ -184,6 +184,10 @@ sudo dpkg -i wkhtmltox_0.12.6-1.bionic_amd64.deb
 ```
 
 ```bash
+sudo apt install -f
+```
+
+```bash
 sudo cp /usr/local/bin/wkhtmltoimage  /usr/bin/wkhtmltoimage
 ```
 
@@ -215,7 +219,7 @@ sudo python3.8 -m pip install -r requirements.txt
 ```
 
 ```bash
-sudo python3 -m pip install --upgrade --force-reinstall -r requirements.txt
+sudo python3.8 -m pip install --upgrade --force-reinstall -r requirements.txt
 ```
 
 ##### Check Werkzeug Version
@@ -238,7 +242,7 @@ For support, email hello.rahul@aol.com 😊
 
 ## Authors
 
-- [@pandyarahul](https://github.com/pandyarahul)
+- 𝓟𝓪𝓷𝓭𝔂𝓪 𝓡𝓪𝓱𝓾𝓵 - [@pandyarahul](https://github.com/pandyarahul)
 
 
 ## 🔗 Links
