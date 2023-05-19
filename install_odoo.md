@@ -33,7 +33,7 @@ sudo apt install git python3-pip build-essential wget python3-dev python3-venv p
 ##### INSTALL DEPENDENCIES USING PIP3
 
 ```bash
-pip3 install Babel decorator docutils ebaysdk feedparser gevent greenlet html2text Jinja2 lxml Mako MarkupSafe mock num2words ofxparse passlib Pillow psutil psycogreen psycopg2 pydot pyparsing PyPDF2 pyserial python-dateutil python-openid pytz pyusb PyYAML qrcode reportlab requests six suds-jurko vatnumber vobject Werkzeug XlsxWriter xlwt xlrd
+pip3 install Babel decorator docutils ebaysdk feedparser gevent greenlet html2text Jinja2 lxml Mako MarkupSafe mock num2words ofxparse passlib Pillow psutil psycogreen pydot pyparsing pyserial python-dateutil python-openid pytz pyusb PyYAML qrcode reportlab requests six suds-jurko vatnumber vobject XlsxWriter xlwt xlrd
 ```
 
 ## Step 4
@@ -43,21 +43,17 @@ pip3 install Babel decorator docutils ebaysdk feedparser gevent greenlet html2te
 sudo apt-get install -y npm
 ```
 
-
 ```bash
 sudo ln -s /usr/bin/nodejs /usr/bin/node
 ```
-
 
 ```bash
 sudo npm install -g less less-plugin-clean-css
 ```
 
-
 ```bash
 sudo apt-get install node-less
 ```
-
 
 ```bash
 sudo python3 -m pip install libsass
@@ -69,7 +65,6 @@ sudo python3 -m pip install libsass
 ```bash
 sudo apt-get install python3-software-properties
 ```
-
 
 ```bash
 sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
@@ -200,6 +195,16 @@ sudo cp /usr/local/bin/wkhtmltopdf  /usr/bin/wkhtmltopdf
 http://localhost:8069
 ```
 
+### Install Requirements
+
+```bash
+sudo python3.8 -m pip install -r requirements.txt
+```
+
+```bash
+sudo python3.8 -m pip install --upgrade --force-reinstall -r requirements.txt
+```
+
 ### Install Missing Packages
 
 ```bash
@@ -212,14 +217,6 @@ sudo python3.8 -m pip install pyopenssl
 
 ```bash
 python3.8 -m pip install PyPDF2==1.26.0
-```
-
-```bash
-sudo python3.8 -m pip install -r requirements.txt
-```
-
-```bash
-sudo python3.8 -m pip install --upgrade --force-reinstall -r requirements.txt
 ```
 
 ##### Check Werkzeug Version
@@ -242,8 +239,7 @@ For support, email hello.rahul@aol.com 😊
 
 ## Authors
 
-- 𝓟𝓪𝓷𝓭𝔂𝓪 𝓡𝓪𝓱𝓾𝓵 - [@pandyarahul](https://github.com/pandyarahul)
-
+- [@pandyarahul](https://github.com/pandyarahul) (𝓟𝓪𝓷𝓭𝔂𝓪 𝓡𝓪𝓱𝓾𝓵 )
 
 ## 🔗 Links
 [![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://pandyarahul.odoo.com/)
