@@ -141,7 +141,7 @@ sudo gedit /etc/odoo.conf
 ```
 
 ## Step 11
-##### Copy and paste below content in config file , write correct addons paths
+##### Copy and paste below content in the config file, and write the correct addons paths in needed
 
 ```bash
 [options]
@@ -161,7 +161,7 @@ db_password = False
 logfile = /var/log/odoo/odoo-server.log
 ```
 
-##### Save and Exit the file. Now run the below command on terminal to grant ownership.
+##### Save and Exit the file. Now you can run the below command on terminal to grant ownership.
 ```bash
 sudo chown odoo: /etc/odoo.conf
 ```
@@ -232,6 +232,28 @@ sudo python3.8 -m pip install Werkzeug==0.16.1
 pip3 install libsass==0.17.0
 ```
 
+##### Web Module Not find
+```bash
+pip3 install Jinja2==2.10.1
+```
+```bash
+pip3 install MarkupSafe==0.23
+```
+
+##### Useful Commands
+```bash
+sudo apt autoremove
+```
+```bash
+sudo apt purge package_name
+```
+```bash
+sudo dpkg --configure -a
+```
+```bash
+pip install pip --upgrade
+pip install pyopenssl --upgrade
+```
 ## Support
 
 For support, email hello.rahul@aol.com 😊
