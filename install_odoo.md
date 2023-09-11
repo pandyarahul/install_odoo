@@ -271,3 +271,8 @@ For support, email hello.rahul@aol.com 😊
 [![Stack Overflow](https://img.shields.io/badge/-Stackoverflow-FE7A16?logo=stack-overflow&logoColor=white)](https://stackoverflow.com/users/17455752)
 
 [![GitHub WidgetBox](https://github-widgetbox.vercel.app/api/profile?username=pandyarahul&data=followers,repositories,stars,commits&theme=nautilus)](https://github.com/Jurredr/github-widgetbox)
+
+<h2 align="center">Value my work? Fuel my motivation with a cup of coffee! ☕</h2>
+<p align="center">
+	<a align="center" href="https://www.buymeacoffee.com/pandyarahul"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=pandyarahul&button_colour=FF5F5F&font_colour=ffffff&font_family=Arial&outline_colour=000000&coffee_colour=FFDD00" /></a>
+</p>
