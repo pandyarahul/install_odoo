@@ -109,9 +109,6 @@ echo "${yellow} *******************************		Starting Odoo 			**************
 python3.8 odoo-bin --addons-path=addons --xmlrpc-port=8026
 
 
-
-
-
 # echo "====================== Create Database User for Odoo ======================"
 # sudo su postgres
 # cd
@@ -121,8 +118,6 @@ python3.8 odoo-bin --addons-path=addons --xmlrpc-port=8026
 # createuser -s $(whoami)
 # exit
 # echo  "====================== Users Created ======================\n\n"
-
-
 
 
 # END OF SCRIPT
