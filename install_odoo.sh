@@ -24,7 +24,6 @@ echo " "
 echo "${red}	Hang Tight & Keep Watching....${clear}\n\n"
 
 
-
 echo "${blue} ******************************* 		Updating System			******************************* ${clear}"
 sudo apt-get update
 echo "${green} ******************************* 		Update Success 			******************************* ${clear}\n"
@@ -74,8 +73,10 @@ echo "${green} ******************************* 		Log File Created 		************
 echo "${red} ******************************* 		Installing psycopg2-binary	******************************* ${clear}"
 sudo python3.8 -m pip install psycopg2-binary
 
+
 echo "${red} ******************************* 		Installing PyPDF2		******************************* ${clear}"
 sudo python3.8 -m pip install PyPDF2==1.26.0
+
 
 echo "${red} *******************************		Installing Werkzeug 		******************************* ${clear}"
 sudo python3.8 -m pip install Werkzeug==0.16.1
@@ -97,10 +98,12 @@ echo "${magenta} Value my work? Fuel my motivation with a cup of coffee! ☕${cl
 echo " "
 echo "${cyan} https://www.buymeacoffee.com/pandyarahul${clear}\n\n"
 
+
 cd
 cd workspace
 cd odoo_16
 cd odoo
+
 
 echo "${yellow} *******************************		Starting Odoo 			******************************* ${clear}!"
 python3.8 odoo-bin --addons-path=addons --xmlrpc-port=8026
