@@ -94,7 +94,9 @@ install_odoo() {
     echo "${blue} *******************************     Cloning Odoo      ******************************* ${clear}"
     mkdir workspace
     cd workspace
+    mkdir odoo_15
     mkdir odoo_16
+    mkdir odoo_17
     cd odoo_16
     mkdir custom_addons_16
     git clone https://www.github.com/odoo/odoo --depth 1 --branch 16.0 --single-branch
