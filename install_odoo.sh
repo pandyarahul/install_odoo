@@ -30,6 +30,7 @@ install_odoo() {
     echo "${blue} *******************************     Installing Python Dependencies  ******************************* ${clear}"
     sudo apt install git python3-pip build-essential wget python3-dev python3-venv python3-wheel libxslt-dev libzip-dev libldap2-dev libsasl2-dev python3-setuptools node-less
     pip3 install Babel decorator docutils ebaysdk feedparser gevent greenlet html2text Jinja2 lxml Mako MarkupSafe mock num2words ofxparse passlib Pillow psutil psycogreen pydot pyparsing pyserial python-dateutil python-openid pytz pyusb PyYAML qrcode reportlab requests six suds-jurko vatnumber vobject XlsxWriter xlwt xlrd
+    sudo pip3 install setuptools
     echo "${green} *******************************    Python Dependencies Installed ******************************* ${clear}\n"
 
 
@@ -50,8 +51,21 @@ install_odoo() {
     sudo apt-get -y install postgresql-12
     echo "${green} *******************************    PostgreSQL Installed    *******************************${clear}\n"
 
+    echo "${blue} *******************************     Create Database User for Odoo     ******************************* ${clear}"
+    # Prompt for PostgreSQL password
+    read -p "Enter Password for PostgreSQL User: " password
+    echo
 
-    # echo "====================== Create Database User for Odoo ======================"
+    # Check if the password is not empty
+    if [ -z "$password" ]; then
+        echo "Error: Password cannot be empty."
+        exit 1
+    fi
+
+    # Create PostgreSQL user
+    sudo -u postgres psql -c "CREATE ROLE $(whoami) WITH SUPERUSER LOGIN CREATEDB CREATEROLE PASSWORD '$password';"
+
+    echo "PostgreSQL user '$(whoami)' has been successfully created."
     # sudo su postgres
     # cd
     # echo createuser : odoo
@@ -100,6 +114,7 @@ install_odoo() {
     cd odoo_16
     mkdir custom_addons_16
     git clone https://www.github.com/odoo/odoo --depth 1 --branch 16.0 --single-branch
+    echo "Odoo has been successfully installed"
         
 }
 
@@ -115,7 +130,7 @@ install_requirements() {
 
     xdg-settings set default-web-browser firefox.desktop
     xdg-open http://localhost:8026
-
+    echo "Odoo has been successfully installed and started. Access it at http://localhost:8026"
     echo "\n${yellow} *******************************   Starting Odoo       ******************************* ${clear}\n"
     python3.8 odoo-bin --addons-path=addons --xmlrpc-port=8026
 }
