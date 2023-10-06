@@ -114,7 +114,8 @@ install_odoo() {
     cd odoo_16
     mkdir custom_addons_16
     git clone https://www.github.com/odoo/odoo --depth 1 --branch 16.0 --single-branch
-    echo "Odoo has been successfully installed"
+    echo "\n\n Odoo has been successfully installed"
+    echo "\n Find Odoo at /Desktop/workspace"
         
 }
 
@@ -130,7 +131,7 @@ install_requirements() {
 
     xdg-settings set default-web-browser firefox.desktop
     xdg-open http://localhost:8026
-    echo "Odoo has been successfully installed and started. Access it at http://localhost:8026"
+    echo "\n\n Odoo has been successfully installed and started. Access it at http://localhost:8026"
     echo "\n${yellow} *******************************   Starting Odoo       ******************************* ${clear}\n"
     python3.8 odoo-bin --addons-path=addons --xmlrpc-port=8026
 }
