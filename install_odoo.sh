@@ -16,6 +16,30 @@ cd
 
 # Function to install Odoo
 install_odoo() {
+    echo "Choose an application to install:"
+    echo "1. Odoo 16.0"
+    echo "2. Odoo 17.0 \n"
+
+    read -p "Enter your choice (1/2): " version_choice
+
+    case $version_choice in
+        1)
+            echo "You chose to install Odoo 16.0 \n"
+            install_odoo_16
+            ;;
+        2)
+            echo "You chose to install Odoo 17.0 \n"
+            install_odoo_17
+            ;;
+        *)
+            echo "Invalid choice. Installation aborted."
+            ;;
+    esac
+    exit 0
+}
+
+# Function to install Odoo
+install_odoo_16() {
     echo "Installing Odoo..."
     echo "${blue} *******************************     Updating System     ******************************* ${clear}"
     sudo apt-get update
@@ -108,19 +132,65 @@ install_odoo() {
     echo "${blue} *******************************     Cloning Odoo      ******************************* ${clear}"
     mkdir workspace
     cd workspace
-    mkdir odoo_15
     mkdir odoo_16
-    mkdir odoo_17
     cd odoo_16
     mkdir custom_addons_16
     git clone https://www.github.com/odoo/odoo --depth 1 --branch 16.0 --single-branch
     echo "\n\n Odoo has been successfully installed"
     echo "\n Find Odoo at /Desktop/workspace"
-        
 }
+
+# Function to install Odoo
+install_odoo_17() {
+    sudo apt update && sudo apt upgrade -y
+
+	sudo apt install software-properties-common -y
+
+	sudo add-apt-repository ppa:deadsnakes/ppa
+
+	sudo apt install python3.10
+
+	sudo apt update
+
+	echo "${blue} *******************************     Cloning Odoo      ******************************* ${clear}"
+    mkdir workspace
+    cd workspace
+    mkdir odoo_17
+    cd odoo_17
+    mkdir custom_addons_17
+    git clone https://www.github.com/odoo/odoo --depth 1 --branch master --single-branch
+    echo "\n\n Odoo has been successfully installed"
+    echo "\n Find Odoo at /Desktop/workspace"
+
+}
+
 
 # Function to install Requirements
 install_requirements() {
+    echo "Choose a Version to install Requirements"
+    echo "1. Odoo 16.0"
+    echo "2. Odoo 17.0 \n"
+
+    read -p "Enter your choice (1/2): " version_choice
+
+    case $version_choice in
+        1)
+            echo "You chose to install Requirements for Odoo 16.0 \n"
+            install_requirements_16
+            ;;
+        2)
+            echo "You chose to install Requirements for Odoo 17.0 \n"
+            install_requirements_17
+            ;;
+        *)
+            echo "Invalid choice. Installation aborted."
+            ;;
+    esac
+    exit 0
+}
+
+# Function to install Requirements for Odoo 16
+install_requirements_16() {
     echo "Installing Requirements..."
     cd
     cd workspace
@@ -136,35 +206,60 @@ install_requirements() {
     python3.8 odoo-bin --addons-path=addons --xmlrpc-port=8026
 }
 
+# Function to install Requirements for Odoo 17
+install_requirements_17() {
+	echo "Installing Requirements..."
+
+    sudo apt install python3.10-distutils
+
+	curl -sS https://bootstrap.pypa.io/get-pip.py | python3.10
+	curl -sS https://bootstrap.pypa.io/get-pip.py | sudo python3.10
+
+	curl -sS https://bootstrap.pypa.io/get-pip.py | python3
+	curl -sS https://bootstrap.pypa.io/get-pip.py | sudo python3
+
+	sudo python3.10 -m pip install psycopg2-binary
+
+    cd
+    cd workspace
+    cd odoo_17
+    cd odoo
+
+    sudo python3.10 -m pip install --upgrade --force-reinstall -r requirements.txt
+}
+
+
 # Main script
-echo "\n${green}--------------------------- Welcome to the Odoo Installation Script --------------------------- ${clear}"
-echo "\n${yellow}   Hello...${clear}!"
-echo "\n${blue}   I'm Pandya Rahul (Odoo Developer)${clear}"
-echo "\n${magenta}   Value my work? Fuel my motivation with a cup of coffee! ☕${clear}"
-echo "\n${cyan}   https://www.buymeacoffee.com/pandyarahul${clear}\n"
+while true; do
+	echo "\n${green}--------------------------- Welcome to the Odoo Installation Script --------------------------- ${clear}"
+	echo "\n${yellow}   Hello...${clear}!"
+	echo "\n${blue}   I'm Pandya Rahul (Odoo Developer)${clear}"
+	echo "\n${magenta}   Value my work? Fuel my motivation with a cup of coffee! ☕${clear}"
+	echo "\n${cyan}   https://www.buymeacoffee.com/pandyarahul${clear}\n"
 
-echo "Please Select an option: \n"
-echo "1. Install Odoo"
-echo "2. Install Requirements"
-echo "3. Quit \n"
+	echo "Please Select an option: \n"
+	echo "1. Install Odoo"
+	echo "2. Install Requirements"
+	echo "3. Quit \n"
 
-read -p "Enter your choice (1/2/3): " choice
+	read -p "Enter your choice (1/2/3): " choice
 
-case "$choice" in
-    1)
-        install_odoo
-        ;;
-    2)
-        install_requirements
-        ;;
-    3)
-        echo "Exiting the script. Goodbye!"
-        exit 0
-        ;;
-    *)
-        echo "Invalid choice. Please select 1, 2, or 3."
-        ;;
-esac
+	case "$choice" in
+	    1)
+	        install_odoo
+	        ;;
+	    2)
+	        install_requirements
+	        ;;
+	    3)
+	        echo "Exiting the script. Goodbye!"
+	        exit 0
+	        ;;
+	    *)
+	        echo "Invalid choice. Please select 1, 2, or 3."
+	        ;;
+	esac
+done
 
 exit 0
 
