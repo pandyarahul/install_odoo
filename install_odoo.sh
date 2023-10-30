@@ -17,8 +17,8 @@ cd
 # Function to install Odoo
 install_odoo() {
     echo "Choose an application to install:"
-    echo "1. Odoo 16.0"
-    echo "2. Odoo 17.0 \n"
+    echo "${green}1. Odoo 16.0 ${clear}"
+    echo "${yellow}2. Odoo 17.0 ${clear}\n"
 
     read -p "Enter your choice (1/2): " version_choice
 
@@ -166,8 +166,8 @@ install_odoo_17() {
 # Function to install Requirements
 install_requirements() {
     echo "Choose a Version to install Requirements"
-    echo "1. Odoo 16.0"
-    echo "2. Odoo 17.0 \n"
+    echo "${green}1. Odoo 16.0 ${clear}"
+    echo "${yellow}2. Odoo 17.0 ${clear}\n"
 
     read -p "Enter your choice (1/2): " version_choice
 
