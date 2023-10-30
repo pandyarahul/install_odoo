@@ -16,7 +16,7 @@ cd
 
 # Function to install Odoo
 install_odoo() {
-    echo "Choose an application to install:"
+    echo "Choose an Odoo Version to install:"
     echo "${green}1. Odoo 16.0 ${clear}"
     echo "${yellow}2. Odoo 17.0 ${clear}\n"
 
@@ -24,11 +24,11 @@ install_odoo() {
 
     case $version_choice in
         1)
-            echo "You chose to install Odoo 16.0 \n"
+            echo "\nYou chose to Install Odoo 16.0 \n"
             install_odoo_16
             ;;
         2)
-            echo "You chose to install Odoo 17.0 \n"
+            echo "\nYou chose to Install Odoo 17.0 \n"
             install_odoo_17
             ;;
         *)
@@ -173,11 +173,11 @@ install_requirements() {
 
     case $version_choice in
         1)
-            echo "You chose to install Requirements for Odoo 16.0 \n"
+            echo "\nYou chose to Install Requirements for Odoo 16.0 \n"
             install_requirements_16
             ;;
         2)
-            echo "You chose to install Requirements for Odoo 17.0 \n"
+            echo "\nYou chose to Install Requirements for Odoo 17.0 \n"
             install_requirements_17
             ;;
         *)
