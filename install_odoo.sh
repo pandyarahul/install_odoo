@@ -142,26 +142,24 @@ install_odoo_16() {
 
 # Function to install Odoo
 install_odoo_17() {
+    echo "${blue} *******************************     Updating System     ******************************* ${clear}"
     sudo apt update && sudo apt upgrade -y
+    
+    echo "${green} *******************************    Installing Python3.10      ******************************* ${clear}\n"
+    sudo apt install software-properties-common -y
+    sudo add-apt-repository ppa:deadsnakes/ppa
+    sudo apt install python3.10
+    sudo apt update
 
-	sudo apt install software-properties-common -y
-
-	sudo add-apt-repository ppa:deadsnakes/ppa
-
-	sudo apt install python3.10
-
-	sudo apt update
-
-	echo "${blue} *******************************     Cloning Odoo      ******************************* ${clear}"
+    echo "${blue} *******************************     Cloning Odoo      ******************************* ${clear}"
     mkdir workspace
     cd workspace
     mkdir odoo_17
     cd odoo_17
     mkdir custom_addons_17
-    git clone https://www.github.com/odoo/odoo --depth 1 --branch master --single-branch
+    git clone https://www.github.com/odoo/odoo --depth 1 --branch 1.0 --single-branch
     echo "\n\n Odoo has been successfully installed"
     echo "\n Find Odoo at /Desktop/workspace"
-
 }
 
 
@@ -208,23 +206,22 @@ install_requirements_16() {
 
 # Function to install Requirements for Odoo 17
 install_requirements_17() {
-	echo "Installing Requirements..."
-
+    echo "Installing Requirements..."
     sudo apt install python3.10-distutils
+    
+    curl -sS https://bootstrap.pypa.io/get-pip.py | python3.10
+    curl -sS https://bootstrap.pypa.io/get-pip.py | sudo python3.10
 
-	curl -sS https://bootstrap.pypa.io/get-pip.py | python3.10
-	curl -sS https://bootstrap.pypa.io/get-pip.py | sudo python3.10
-
-	curl -sS https://bootstrap.pypa.io/get-pip.py | python3
-	curl -sS https://bootstrap.pypa.io/get-pip.py | sudo python3
-
-	sudo python3.10 -m pip install psycopg2-binary
+    curl -sS https://bootstrap.pypa.io/get-pip.py | python3
+    curl -sS https://bootstrap.pypa.io/get-pip.py | sudo python3
+    
+    echo "${red} *******************************    Installing psycopg2-binary  ******************************* ${clear}"
+    sudo python3.10 -m pip install psycopg2-binary
 
     cd
     cd workspace
     cd odoo_17
     cd odoo
-
     sudo python3.10 -m pip install --upgrade --force-reinstall -r requirements.txt
 }
 
@@ -238,11 +235,11 @@ while true; do
 	echo "\n${cyan}   https://www.buymeacoffee.com/pandyarahul${clear}\n"
 
 	echo "Please Select an option: \n"
-	echo "1. Install Odoo"
-	echo "2. Install Requirements"
-	echo "3. Quit \n"
+	echo "${green}1. Install Odoo ${clear}"
+	echo "${yellow}2. Install Requirements ${clear}"
+	echo "${red}3. Quit ${clear}\n"
 
-	read -p "Enter your choice (1/2/3): " choice
+	read -p "${cyan}Enter your choice (1/2/3): ${clear}" choice
 
 	case "$choice" in
 	    1)
@@ -260,7 +257,6 @@ while true; do
 	        ;;
 	esac
 done
-
 exit 0
 
 #END OF SCRIPT
