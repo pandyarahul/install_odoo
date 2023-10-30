@@ -239,7 +239,7 @@ while true; do
 	echo "${yellow}2. Install Requirements ${clear}"
 	echo "${red}3. Quit ${clear}\n"
 
-	read -p "${cyan}Enter your choice (1/2/3): ${clear}" choice
+	read -p "Enter your choice (1/2/3): " choice
 
 	case "$choice" in
 	    1)
