@@ -1,5 +1,5 @@
 
-# 🛠 Install Odoo
+# 🛠 Install [Odoo](https://www.odoo.com "Odoo's Homepage")
 
 ####  ℹ️ 𝚃𝚑𝚒𝚜 𝚜𝚌𝚛𝚒𝚙𝚝 𝚑𝚎𝚕𝚙𝚜 𝚞𝚜𝚎𝚛𝚜 𝚝𝚘 𝚎𝚊𝚜𝚒𝚕𝚢 𝚒𝚗𝚜𝚝𝚊𝚕𝚕 𝙾𝚍𝚘𝚘 𝚘𝚗 𝚜𝚎𝚛𝚟𝚎𝚛.
 
