@@ -111,24 +111,6 @@ install_odoo_16() {
     sudo chown -R odoo:root /var/log/odoo
     echo "${green} *******************************    Log File Created    ******************************* ${clear}\n"
 
-
-    echo "${red} *******************************    Installing psycopg2-binary  ******************************* ${clear}"
-    sudo python3.8 -m pip install psycopg2-binary
-
-    echo "${red} *******************************    Installing PyPDF2   ******************************* ${clear}"
-    sudo python3.8 -m pip install PyPDF2==1.26.0
-
-    echo "${red} *******************************    Installing Werkzeug     ******************************* ${clear}"
-    sudo python3.8 -m pip install Werkzeug==0.16.1
-
-    echo "${red} *******************************    Installing WKHTMLTOPDF     ******************************* ${clear}"
-    sudo wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.bionic_amd64.deb
-    sudo dpkg -i wkhtmltox_0.12.6-1.bionic_amd64.deb
-    sudo apt install -f
-    sudo dpkg -i wkhtmltox_0.12.6-1.bionic_amd64.deb
-    sudo cp /usr/local/bin/wkhtmltoimage  /usr/bin/wkhtmltoimage
-    sudo cp /usr/local/bin/wkhtmltopdf  /usr/bin/wkhtmltopdf
-
     echo "${blue} *******************************     Cloning Odoo      ******************************* ${clear}"
     mkdir workspace
     cd workspace
@@ -195,6 +177,21 @@ install_requirements_16() {
     cd odoo_16
     cd odoo
 
+    echo "${green} *******************************    Installing psycopg2-binary  ******************************* ${clear}"
+    sudo python3.8 -m pip install psycopg2-binary
+    echo "${green} *******************************    Installing PyPDF2   ******************************* ${clear}"
+    sudo python3.8 -m pip install PyPDF2==1.26.0
+    echo "${green} *******************************    Installing Werkzeug     ******************************* ${clear}"
+    sudo python3.8 -m pip install Werkzeug==0.16.1
+    
+    echo "${green} *******************************    Installing WKHTMLTOPDF     ******************************* ${clear}"
+    sudo wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.bionic_amd64.deb
+    sudo dpkg -i wkhtmltox_0.12.6-1.bionic_amd64.deb
+    sudo apt install -f
+    sudo dpkg -i wkhtmltox_0.12.6-1.bionic_amd64.deb
+    sudo cp /usr/local/bin/wkhtmltoimage  /usr/bin/wkhtmltoimage
+    sudo cp /usr/local/bin/wkhtmltopdf  /usr/bin/wkhtmltopdf
+
     sudo python3.8 -m pip install --upgrade --force-reinstall -r requirements.txt
 
     xdg-settings set default-web-browser firefox.desktop
@@ -217,9 +214,11 @@ install_requirements_17() {
     curl -sS https://bootstrap.pypa.io/get-pip.py | python3
     curl -sS https://bootstrap.pypa.io/get-pip.py | sudo python3
     
-    echo "${red} *******************************    Installing psycopg2-binary  ******************************* ${clear}"
+    echo "${green} *******************************    Installing psycopg2-binary  ******************************* ${clear}"
     sudo python3.10 -m pip install psycopg2-binary
+    echo "${green} *******************************    Installing PyPDF2   ******************************* ${clear}"
     sudo python3.10 -m pip install PyPDF2==2.12.1
+    echo "${green} *******************************    Installing Werkzeug     ******************************* ${clear}"
     sudo python3.10 -m pip install Werkzeug==2.0.2
 
     cd
