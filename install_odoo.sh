@@ -157,7 +157,7 @@ install_odoo_17() {
     mkdir odoo_17
     cd odoo_17
     mkdir custom_addons_17
-    git clone https://www.github.com/odoo/odoo --depth 1 --branch 1.0 --single-branch
+    git clone https://www.github.com/odoo/odoo --depth 1 --branch 17.0 --single-branch
     echo "\n\n Odoo has been successfully installed"
     echo "\n Find Odoo at /Desktop/workspace"
 }
@@ -207,8 +207,10 @@ install_requirements_16() {
 # Function to install Requirements for Odoo 17
 install_requirements_17() {
     echo "Installing Requirements..."
+    sudo apt autoremove
     sudo apt install python3.10-distutils
-    
+
+    sudo snap install curl
     curl -sS https://bootstrap.pypa.io/get-pip.py | python3.10
     curl -sS https://bootstrap.pypa.io/get-pip.py | sudo python3.10
 
@@ -217,12 +219,20 @@ install_requirements_17() {
     
     echo "${red} *******************************    Installing psycopg2-binary  ******************************* ${clear}"
     sudo python3.10 -m pip install psycopg2-binary
+    sudo python3.10 -m pip install PyPDF2==2.12.1
+    sudo python3.10 -m pip install Werkzeug==2.0.2
 
     cd
     cd workspace
     cd odoo_17
     cd odoo
     sudo python3.10 -m pip install --upgrade --force-reinstall -r requirements.txt
+
+    xdg-settings set default-web-browser firefox.desktop
+    xdg-open http://localhost:8027
+    echo "\n\n Odoo has been successfully installed and started. Access it at http://localhost:8027"
+    echo "\n${yellow} *******************************   Starting Odoo       ******************************* ${clear}\n"
+    python3.10 odoo-bin --addons-path=addons --xmlrpc-port=8027
 }
 
 
