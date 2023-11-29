@@ -9,13 +9,13 @@
 Open the terminal and paste below code.
 
 ```bash
-  wget https://github.com/pandyarahul/install_odoo/blob/main/install_odoo.sh
+wget https://github.com/pandyarahul/install_odoo/blob/main/install_odoo.sh
 ```
 
 Now, execute a script with the below code.
 
 ```bash
-  sh install_odoo.sh
+sh install_odoo.sh
 ```
 
 ## Option 2: Install Odoo Mannually
