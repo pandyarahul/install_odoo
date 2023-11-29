@@ -14,6 +14,12 @@ clear='\033[0m'
 clear
 cd
 
+# Function to display error and exit
+function error_exit {
+    echo "$1" >&2
+    exit 1
+}
+
 # Function to install Odoo
 install_odoo() {
     echo "\nChoose an Odoo Version to Install:"
@@ -42,17 +48,17 @@ install_odoo() {
 install_odoo_16() {
     echo "Installing Odoo..."
     echo "${blue} *******************************     Updating System     ******************************* ${clear}"
-    sudo apt-get update
+    sudo apt-get update || error_exit "Failed to update system."
     echo "${green} *******************************    Update Success      ******************************* ${clear}\n"
 
 
     echo "${blue} *******************************     Upgrading System    ******************************* ${clear}"
-    sudo apt-get -y upgrade
+    sudo apt-get upgrade -y || error_exit "Failed to upgrade system."
     echo "${green} *******************************    Upgrade Success     ******************************* ${clear}\n"
 
 
     echo "${blue} *******************************     Installing Python Dependencies  ******************************* ${clear}"
-    sudo apt install git python3-pip build-essential wget python3-dev python3-venv python3-wheel libxslt-dev libzip-dev libldap2-dev libsasl2-dev python3-setuptools node-less
+    sudo apt install git python3-pip build-essential wget python3-dev python3-venv python3-wheel libxslt-dev libzip-dev libldap2-dev libsasl2-dev python3-setuptools node-less || error_exit "Failed to install dependencies."
     pip3 install Babel decorator docutils ebaysdk feedparser gevent greenlet html2text Jinja2 lxml Mako MarkupSafe mock num2words ofxparse passlib Pillow psutil psycogreen pydot pyparsing pyserial python-dateutil python-openid pytz pyusb PyYAML qrcode reportlab requests six suds-jurko vatnumber vobject XlsxWriter xlwt xlrd
     sudo pip3 install setuptools
     echo "${green} *******************************    Python Dependencies Installed ******************************* ${clear}\n"
@@ -87,7 +93,7 @@ install_odoo_16() {
     fi
 
     # Create PostgreSQL user
-    sudo -u postgres psql -c "CREATE ROLE $(whoami) WITH SUPERUSER LOGIN CREATEDB CREATEROLE PASSWORD '$password';"
+    sudo -u postgres psql -c "CREATE ROLE $(whoami) WITH SUPERUSER LOGIN CREATEDB CREATEROLE PASSWORD '$password';" || error_exit "Failed to create PostgreSQL user."
 
     echo "PostgreSQL user '$(whoami)' has been successfully created."
     # sudo su postgres
@@ -101,14 +107,14 @@ install_odoo_16() {
 
 
     echo "${blue} *******************************     Creating Odoo User and Group  ******************************* ${clear}"
-    sudo adduser --system --home=/opt/odoo --group odoo
+    sudo adduser --system --home=/opt/odoo --group odoo || error_exit "Failed to create Odoo user and group."
     echo "${green} *******************************    Odoo User and Group Created   ******************************* ${clear}\n"
 
 
     echo "${blue} *******************************     Create Odoo Log File    ******************************* ${clear}"
     sudo apt-get update
-    sudo mkdir /var/log/odoo
-    sudo chown -R odoo:root /var/log/odoo
+    sudo mkdir /var/log/odoo || error_exit "Failed to create log directory."
+    sudo chown -R odoo:root /var/log/odoo || error_exit "Failed to change ownership of log directory."
     echo "${green} *******************************    Log File Created    ******************************* ${clear}\n"
 
     echo "${blue} *******************************     Cloning Odoo      ******************************* ${clear}"
@@ -188,11 +194,11 @@ install_requirements_16() {
     sudo wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.bionic_amd64.deb
     sudo dpkg -i wkhtmltox_0.12.6-1.bionic_amd64.deb
     sudo apt install -f
-    sudo dpkg -i wkhtmltox_0.12.6-1.bionic_amd64.deb
+    sudo dpkg -i wkhtmltox_0.12.6-1.bionic_amd64.deb || error_exit "Failed to install WKHTMLTOPDF."
     sudo cp /usr/local/bin/wkhtmltoimage  /usr/bin/wkhtmltoimage
     sudo cp /usr/local/bin/wkhtmltopdf  /usr/bin/wkhtmltopdf
 
-    sudo python3.8 -m pip install --upgrade --force-reinstall -r requirements.txt
+    sudo python3.8 -m pip install --upgrade --force-reinstall -r requirements.txt || error_exit "Failed to install requirements."
 
     xdg-settings set default-web-browser firefox.desktop
     xdg-open http://localhost:8026
@@ -225,7 +231,7 @@ install_requirements_17() {
     cd workspace
     cd odoo_17
     cd odoo
-    sudo python3.10 -m pip install --upgrade --force-reinstall -r requirements.txt
+    sudo python3.10 -m pip install --upgrade --force-reinstall -r requirements.txt || error_exit "Failed to install requirements."
 
     xdg-settings set default-web-browser firefox.desktop
     xdg-open http://localhost:8027
