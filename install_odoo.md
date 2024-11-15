@@ -192,8 +192,11 @@ sudo cp /usr/local/bin/wkhtmltopdf  /usr/bin/wkhtmltopdf
 ```bash
 sudo apt-get --assume-yes install xfonts-75dpi xfonts-base
 ```
+
+```bash
 sudo -i
 ```
+
 ```bash
 wget http://archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1f-1ubuntu2_amd64.deb
 ```
