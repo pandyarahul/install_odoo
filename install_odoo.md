@@ -188,6 +188,18 @@ sudo cp /usr/local/bin/wkhtmltoimage  /usr/bin/wkhtmltoimage
 ```bash
 sudo cp /usr/local/bin/wkhtmltopdf  /usr/bin/wkhtmltopdf
 ```
+##### If getting issue with wkhtmltopdf
+```bash
+sudo apt-get --assume-yes install xfonts-75dpi xfonts-base
+```
+sudo -i
+```
+```bash
+wget http://archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1f-1ubuntu2_amd64.deb
+```
+```bash
+sudo dpkg -i libssl1.1_1.1.1f-1ubuntu2_amd64.deb
+```
 
 # 🚀 Launch Odoo
 ```bash
