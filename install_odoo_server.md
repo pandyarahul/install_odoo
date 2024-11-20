@@ -196,13 +196,25 @@ Check ubuntu version :
 ```bash
 [options]
 ; This is the password that allows database operations:
-admin_passwd = odoo@master_pass
+
+admin_passwd= bi@master@909
 db_host = False
+db_name = False
 db_port = False
-db_user = odoo17
+db_user = odoo18
 db_password = False
-addons_path = /home/odoo17/odoo/addons,/home/odoo17/odoo/odoo/addons,
-logfile = /var/log/odoo17.log
+addons_path = /home/odoo18/odoo/addons,/home/odoo18/odoo/odoo/addons,/home/odoo18/enterprise/
+workers= 0
+proxy_mode = True
+db_maxconn = 128
+limit_memory_soft = 2698693120
+limit_memory_hard = 31743271936
+limit_request = 81960
+limit_time_cpu = 6000
+limit_time_real = 3600
+max_cron_threads = 1
+xmlrpc_port = 8069
+logfile = /var/log/odoo/odoo18.log
 ```
 
 ```bash
@@ -219,18 +231,18 @@ logfile = /var/log/odoo17.log
 Check ubuntu version :
 
 ```bash
-Unit]
-Description=Odoo17
+[Unit]
+Description=Odoo18
 Requires=postgresql.service
 After=network.target postgresql.service
 
 [Service]
 Type=simple
-SyslogIdentifier=biodoo14
+SyslogIdentifier=odoo18
 PermissionsStartOnly=true
-User=biodoo17
-Group=biodoo17
-ExecStart=/home/odoo14/odoo/odoo-bin -c /home/odoo17/odoo17.conf
+User=odoo18
+Group=odoo18
+ExecStart=/home/odoo18/odoo/odoo-bin -c /home/odoo18/odoo18.conf
 StandardOutput=journal+console
 
 [Install]
@@ -260,7 +272,7 @@ sudo systemctl start biodoo17
 Stop Odoo Service :
 
 ```bash
-sudo systemctl start biodoo17
+sudo systemctl stop biodoo17
 ```
 
 Restart Odoo Service :
@@ -273,6 +285,22 @@ Check Status of Service :
 
 ```bash
 sudo systemctl status biodoo17
+```
+
+Update and upgrade pip
+```bash
+pip install --upgrade setuptools
+
+pip install -U setuptools
+
+pip install --upgrade --force-reinstall setuptools
+```
+
+Add module on server
+```bash
+sudo rsync -Paz --rsh "ssh -i bhaktivedanta_odoo17.pem" /home/rahul/Downloads/bma_addons ubuntu@35.154.10.30:/home/biodoo17/custom_addons
+
+cp -i /home/biodoo17/custom_addons/bma_addons/ /home/biodoo17/custom_addons/
 ```
 
 ## Documentation
