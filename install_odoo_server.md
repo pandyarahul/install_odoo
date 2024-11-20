@@ -1,4 +1,4 @@
-
+# 🛠 Install [Odoo](https://www.odoo.com "Odoo's Homepage") on Server
 ## Login to the Ubuntu server via SSH :
 
 ```bash
