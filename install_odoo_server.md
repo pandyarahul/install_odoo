@@ -237,7 +237,11 @@ sudo chmod 777 -R /var/log/odoo/
 
 ```bash
 /home/biodoo17/odoo$ python3.10 ./odoo-bin -c ../odoo17.conf
+```
+Check Server logs
 
+```bash
+sudo tail -f /var/log/odoo/odoo18.log
 ```
 
 ## Create Service File :
