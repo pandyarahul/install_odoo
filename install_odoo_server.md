@@ -15,7 +15,6 @@ lsb_release -a
 
 ```bash
 sudo apt update && sudo apt upgrade
-
 ```
 
 ## Install Python 3.10 :
@@ -25,7 +24,6 @@ Prerequisite :
 ```bash
 sudo apt update
 sudo apt install software-properties-common -y
-
 ```
 
 Add custom APT repository :
@@ -34,6 +32,7 @@ Add custom APT repository :
 sudo add-apt-repository ppa:deadsnakes/ppa -y
 sudo apt update
 ```
+
 Press ENTER to confirm adding repository.
 
 ```bash
@@ -75,6 +74,9 @@ python3 get-pip.py
 
 ```bash
 python3 -m pip install --upgrade pip
+```
+
+```bash
 pip --version
 ```
 
@@ -94,15 +96,15 @@ sudo apt-get install -y node-less
 /home$ sudo adduser biodoo17
 ```
 
-Give Permission :
+Give execute permissions to the user :
 
 ```bash
 sudo chmod 777 -R biodoo17/
 ```
+
 ## Setup Database Server :
 
-
-Install postgresql :
+Install PostgreSQL :
 
 ```bash
 sudo apt-get install postgresql
@@ -110,18 +112,22 @@ sudo apt-get install postgresql
 
 ```bash
 sudo su - postgres
-createuser --createdb --username postgres --no-createrole --no-superuser --pwprompt odoo17
+```
 
+```bash
+createuser --createdb --username postgres --no-createrole --no-superuser --pwprompt odoo17
 ```
 
 ```bash
 psql
+```
+
+```bash
 ALTER USER odoo17 WITH SUPERUSER;
 ```
 
 ```bash
-\q
-exit
+\q OR exit
 ```
 
 ## Clone Odoo :
@@ -136,7 +142,7 @@ cd biodoo17/
 git clone https://www.github.com/odoo/odoo --depth 1 --branch 17.0 --single-branch
 ```
 
-Check ubuntu version :
+Give execute permissions to Odoo :
 
 ```bash
 sudo chmod 777 -R odoo/
@@ -185,13 +191,14 @@ wget http://archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1f-1ubun
 ```bash
 sudo dpkg -i libssl1.1_1.1.1f-1ubuntu2_amd64.deb
 ```
-## Create Conf File :
+
+## Create Config File :
 
 ```bash
 /home/biodoo17$ sudo vim odoo17.conf
 ```
 
-Check ubuntu version :
+Paste below content intto file :
 
 ```bash
 [options]
@@ -217,6 +224,17 @@ xmlrpc_port = 8069
 logfile = /var/log/odoo/odoo18.log
 ```
 
+Create a Log file for Odoo :
+
+```bash
+sudo mkdir -p /var/log/odoo/
+```
+
+```bash
+sudo chmod 777 -R /var/log/odoo/
+
+```
+
 ```bash
 /home/biodoo17/odoo$ python3.10 ./odoo-bin -c ../odoo17.conf
 
@@ -228,7 +246,7 @@ logfile = /var/log/odoo/odoo18.log
 /home$ sudo vim /etc/systemd/system/biodoo17.service
 ```
 
-Check ubuntu version :
+Paste the below content into service file :
 
 ```bash
 [Unit]
@@ -288,11 +306,16 @@ sudo systemctl status biodoo17
 ```
 
 Update and upgrade pip
+
 ```bash
 pip install --upgrade setuptools
+```
 
+```bash
 pip install -U setuptools
+```
 
+```bash
 pip install --upgrade --force-reinstall setuptools
 ```
 
