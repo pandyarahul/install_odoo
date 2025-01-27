@@ -43,29 +43,29 @@ python3 --version
 Extra packages for Python 3.10 :
 
 ```bash
-sudo apt install python3.10-dbg
+sudo apt install python3.10-dbg -y
 ```
 
 ```bash
- sudo apt install python3.10-dev
+ sudo apt install python3.10-dev -y
 ```
 
 ```bash
-sudo apt install python3.10-venv
+sudo apt install python3.10-venv -y
 ```
 
 ```bash
-sudo apt install python3.10-distutils
+sudo apt install python3.10-distutils -y
 ```
 
 ```bash
-sudo apt install python3.10-full
+sudo apt install python3.10-full -y
 ```
 
 ## Install PIP for Python 3.10 :
 
 ```bash
-wget https://bootstrap.pypa.io/get-pip.py
+sudo wget https://bootstrap.pypa.io/get-pip.py
 ```
 
 ```bash
@@ -83,7 +83,7 @@ pip --version
 ## Install Packages and libraries :
 
 ```bash
-sudo apt-get install python-dev python3-dev libxml2-dev libxslt1-dev zlib1g-dev libsasl2-dev libldap2-dev build-essential libssl-dev libffi-dev libmysqlclient-dev libjpeg-dev libpq-dev libjpeg8-dev liblcms2-dev libblas-dev libatlas-base-dev
+sudo apt-get install libxml2-dev libxslt1-dev zlib1g-dev libsasl2-dev libldap2-dev build-essential libssl-dev libffi-dev libmysqlclient-dev libjpeg-dev libpq-dev libjpeg8-dev liblcms2-dev libblas-dev libatlas-base-dev
 sudo apt-get install -y npm
 sudo ln -s /usr/bin/nodejs /usr/bin/node
 sudo npm install -g less less-plugin-clean-css
@@ -93,13 +93,13 @@ sudo apt-get install -y node-less
 ## Add New User for Ubuntu :
 
 ```bash
-/home$ sudo adduser biodoo17
+/home$ sudo adduser biodoo18
 ```
 
 Give execute permissions to the user :
 
 ```bash
-sudo chmod 777 -R biodoo17/
+sudo chmod 777 -R biodoo18/
 ```
 
 ## Setup Database Server :
@@ -107,7 +107,7 @@ sudo chmod 777 -R biodoo17/
 Install PostgreSQL :
 
 ```bash
-sudo apt-get install postgresql
+sudo apt-get install postgresql -y
 ```
 
 ```bash
@@ -195,7 +195,7 @@ sudo dpkg -i libssl1.1_1.1.1f-1ubuntu2_amd64.deb
 ## Create Config File :
 
 ```bash
-/home/biodoo17$ sudo vim odoo17.conf
+/home/biodoo17$ sudo vim biodoo18.conf
 ```
 
 Paste below content intto file :
