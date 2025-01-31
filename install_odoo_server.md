@@ -14,7 +14,7 @@ lsb_release -a
 ## Update Server :
 
 ```bash
-sudo apt update && sudo apt upgrade
+sudo apt update && sudo apt upgrade -y
 ```
 
 ## Install Python 3.10 :
@@ -69,7 +69,7 @@ sudo wget https://bootstrap.pypa.io/get-pip.py
 ```
 
 ```bash
-python3 get-pip.py
+sudo python3 get-pip.py
 ```
 
 ```bash
