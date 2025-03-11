@@ -55,7 +55,7 @@ install_odoo_16() {
     echo "${blue} *******************************     Installing Python Dependencies  ******************************* ${clear}"
     sudo apt install git python3-pip build-essential wget python3-dev python3-venv python3-wheel libxslt-dev libzip-dev libldap2-dev libsasl2-dev python3-setuptools node-less
     pip3 install Babel decorator docutils ebaysdk feedparser gevent greenlet html2text Jinja2 lxml Mako MarkupSafe mock num2words ofxparse passlib Pillow psutil psycogreen pydot pyparsing pyserial python-dateutil python-openid pytz pyusb PyYAML qrcode reportlab requests six suds-jurko vatnumber vobject XlsxWriter xlwt xlrd
-    sudo pip3 install setuptools
+    sudo pip3 install setuptools -y
     echo "${green} *******************************    Python Dependencies Installed ******************************* ${clear}\n"
 
 
