@@ -254,6 +254,16 @@ pip3 install Jinja2==2.10.1
 ```bash
 pip3 install MarkupSafe==0.23
 ```
+##### Enable port on Server
+```bash
+sudo ufw allow 8069
+```
+```bash
+sudo ufw reload
+```
+```bash
+sudo ufw status
+```
 
 ##### Useful Commands
 ```bash
