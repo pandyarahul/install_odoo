@@ -113,6 +113,7 @@ EOF
 echo "🚀 Starting and enabling Odoo service..."
 sudo systemctl daemon-reload
 sudo systemctl enable --now $ODOO_USER
+sudo systemctl start $ODOO_USER
 sudo systemctl status $ODOO_USER --no-pager
 
 echo "✅ Odoo 18 Installation Complete!"
