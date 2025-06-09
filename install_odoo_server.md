@@ -33,33 +33,14 @@ sudo add-apt-repository ppa:deadsnakes/ppa -y
 sudo apt update
 ```
 
-Press ENTER to confirm adding repository.
+Press ENTER to confirm adding the repository.
 
 ```bash
-sudo apt install python3.10
+sudo apt install -y python3.10 python3.10-dbg python3.10-dev python3.10-venv python3.10-distutils python3.10-full
+```
+
+```bash
 python3 --version
-```
-
-Extra packages for Python 3.10 :
-
-```bash
-sudo apt install python3.10-dbg -y
-```
-
-```bash
- sudo apt install python3.10-dev -y
-```
-
-```bash
-sudo apt install python3.10-venv -y
-```
-
-```bash
-sudo apt install python3.10-distutils -y
-```
-
-```bash
-sudo apt install python3.10-full -y
 ```
 
 ## Install PIP for Python 3.10 :
@@ -93,13 +74,13 @@ sudo apt-get install -y node-less
 ## Add New User for Ubuntu :
 
 ```bash
-/home$ sudo adduser biodoo18
+/home$ sudo adduser odoo18
 ```
 
 Give execute permissions to the user :
 
 ```bash
-sudo chmod 777 -R biodoo18/
+sudo chmod 777 -R odoo18/
 ```
 
 ## Setup Database Server :
@@ -115,7 +96,7 @@ sudo su - postgres
 ```
 
 ```bash
-createuser --createdb --username postgres --no-createrole --no-superuser --pwprompt odoo17
+createuser --createdb --username postgres --no-createrole --no-superuser --pwprompt odoo18
 ```
 
 ```bash
@@ -123,7 +104,7 @@ psql
 ```
 
 ```bash
-ALTER USER odoo17 WITH SUPERUSER;
+ALTER USER odoo18 WITH SUPERUSER;
 ```
 
 ```bash
@@ -137,7 +118,7 @@ sudo apt-get install git
 ```
 
 ```bash
-cd biodoo17/
+cd odoo18/
 
 git clone https://www.github.com/odoo/odoo --depth 1 --branch 17.0 --single-branch
 ```
@@ -151,8 +132,8 @@ sudo chmod 777 -R odoo/
 Run Requirement of Odoo:
 
 ```bash
-/home/biodoo17$ cd odoo/
-/home/biodoo17/odoo$ sudo python3.10 -m pip install -r requirements.txt
+/home/odoo18$ cd odoo/
+/home/odoo18/odoo$ sudo python3.10 -m pip install -r requirements.txt
 ```
 
 ## Install WKHTMLTOPDF
@@ -195,16 +176,16 @@ sudo dpkg -i libssl1.1_1.1.1f-1ubuntu2_amd64.deb
 ## Create Config File :
 
 ```bash
-/home/biodoo17$ sudo vim biodoo18.conf
+/home/odoo18$ sudo vim odoo18.conf
 ```
 
-Paste below content intto file :
+Paste below content into the file :
 
 ```bash
 [options]
 ; This is the password that allows database operations:
 
-admin_passwd= bi@master@909
+admin_passwd= master@password
 db_host = False
 db_name = False
 db_port = False
@@ -236,7 +217,7 @@ sudo chmod 777 -R /var/log/odoo/
 ```
 
 ```bash
-/home/biodoo17/odoo$ python3.10 ./odoo-bin -c ../odoo17.conf
+/home/odoo18/odoo$ python3.10 ./odoo-bin -c ../odoo18.conf
 ```
 Check Server logs
 
@@ -247,14 +228,14 @@ sudo tail -f /var/log/odoo/odoo18.log
 ## Create Service File :
 
 ```bash
-/home$ sudo vim /etc/systemd/system/biodoo17.service
+/home$ sudo vim /etc/systemd/system/odoo18.service
 ```
 
 Paste the below content into service file :
 
 ```bash
 [Unit]
-Description=Odoo18
+Description=Odoo18 Enterprise
 Requires=postgresql.service
 After=network.target postgresql.service
 
@@ -276,7 +257,7 @@ WantedBy=multi-user.target
 Enable Odoo Service :
 
 ```bash
-sudo systemctl enable --now biodoo17
+sudo systemctl enable --now odoo18
 ```
 
 Reload services :
@@ -288,25 +269,25 @@ sudo systemctl daemon-reload
 Start Odoo Service :
 
 ```bash
-sudo systemctl start biodoo17
+sudo systemctl start odoo18
 ```
 
 Stop Odoo Service :
 
 ```bash
-sudo systemctl stop biodoo17
+sudo systemctl stop odoo18
 ```
 
 Restart Odoo Service :
 
 ```bash
-sudo systemctl restart biodoo17
+sudo systemctl restart odoo18
 ```
 
 Check Status of Service :
 
 ```bash
-sudo systemctl status biodoo17
+sudo systemctl status odoo18
 ```
 
 Update and upgrade pip
@@ -325,9 +306,9 @@ pip install --upgrade --force-reinstall setuptools
 
 Add module on server
 ```bash
-sudo rsync -Paz --rsh "ssh -i bhaktivedanta_odoo17.pem" /home/rahul/Downloads/bma_addons ubuntu@35.154.10.30:/home/biodoo17/custom_addons
+sudo rsync -Paz --rsh "ssh -i bhaktivedanta_odoo17.pem" /home/rahul/Downloads/bma_addons ubuntu@35.154.10.30:/home/odoo18/custom_addons
 
-cp -i /home/biodoo17/custom_addons/bma_addons/ /home/biodoo17/custom_addons/
+cp -i /home/odoo18/custom_addons/bma_addons/ /home/odoo18/custom_addons/
 ```
 
 ## Documentation
