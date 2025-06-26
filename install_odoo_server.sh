@@ -27,9 +27,9 @@ sudo apt install -y python${PYTHON_VERSION} python${PYTHON_VERSION}-dev python${
   python${PYTHON_VERSION}-distutils python${PYTHON_VERSION}-full python${PYTHON_VERSION}-dbg
 
 echo -e "\n📦 Installing pip for Python $PYTHON_VERSION...\n"
-wget https://bootstrap.pypa.io/get-pip.py
+sudo wget https://bootstrap.pypa.io/get-pip.py
 sudo python${PYTHON_VERSION} get-pip.py
-rm get-pip.py
+sudo rm get-pip.py
 sudo python${PYTHON_VERSION} -m pip install --upgrade pip setuptools wheel
 
 echo -e "\n📚 Installing required libraries...\n"
