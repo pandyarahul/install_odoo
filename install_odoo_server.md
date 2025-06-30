@@ -2,7 +2,11 @@
 ## Login to the Ubuntu server via SSH :
 
 ```bash
-ssh -i prem_file_name.pem username@IP_Address
+sudo ssh -i prem_file_name.pem username@IP_Address
+```
+
+```bash
+sudo ssh username@IP_Address
 ```
 
 Check ubuntu version :
