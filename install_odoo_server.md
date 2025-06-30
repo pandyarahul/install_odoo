@@ -311,6 +311,10 @@ sudo rsync -Paz --rsh "ssh -i bhaktivedanta_odoo17.pem" /home/rahul/Downloads/bm
 cp -i /home/odoo18/custom_addons/bma_addons/ /home/odoo18/custom_addons/
 ```
 
+```bash
+scp -r /home/pandya/Downloads/odoo-production/* amit.parik@10.20.30.128:/home/odoo18/custom_addons
+```
+
 ## Documentation
 
 [Documentation](https://www.cybrosys.com/blog/how-to-install-odoo-17-on-ubuntu-20-04-lts-server)
