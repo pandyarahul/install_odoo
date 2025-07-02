@@ -163,3 +163,89 @@ sudo systemctl reload nginx
 ```
 
 ---
+
+### 🔹 **Step 4: Test Domain Access via HTTP**
+
+Before setting up SSL, verify that your domain works with HTTP:
+
+Test from the server itself
+```bash
+curl -I http://yourdomain.com
+```
+
+**Open in your web browser:**
+```
+http://yourdomain.com
+```
+
+You should see your Odoo login page served through your custom domain.
+
+**If you encounter issues:**
+- Check Nginx error logs: `sudo tail -f /var/log/nginx/error.log`
+- Verify Odoo is running: `sudo systemctl status odoo` (or your Odoo service name)
+- Check DNS resolution: `nslookup yourdomain.com`
+
+---
+
+### 🔹 **Step 5: Install Certbot for SSL Certificate**
+
+Install Certbot to obtain a free SSL certificate from Let's Encrypt:
+
+```bash
+sudo apt install certbot python3-certbot-nginx -y
+```
+
+**Verify installation:**
+```bash
+certbot --version
+```
+
+---
+
+### 🔹 **Step 6: Obtain and Configure SSL Certificate**
+
+Run Certbot to automatically obtain and configure SSL:
+
+```bash
+sudo certbot --nginx -d yourdomain.com
+```
+
+**During the interactive process:**
+
+1. **Email address:** Enter a valid email for renewal notifications
+2. **Terms of Service:** Type 'Y' to agree
+3. **Marketing emails:** Choose 'Y' or 'N' as preferred
+4. **HTTP to HTTPS redirect:** Choose option **2** (Redirect) to force HTTPS
+
+**Expected output:** 
+```
+Successfully received certificate.
+Certificate is saved at: /etc/letsencrypt/live/yourdomain.com/fullchain.pem
+Key is saved at: /etc/letsencrypt/live/yourdomain.com/privkey.pem
+```
+
+---
+
+### 🔹 **Step 7: Verify HTTPS Access**
+
+Test your secure connection:
+
+**Open in your web browser:**
+```
+https://yourdomain.com
+```
+
+**Command line verification:**
+```bash
+curl -I https://yourdomain.com
+
+openssl s_client -connect yourdomain.com:443 -servername yourdomain.com
+```
+
+You should see:
+- 🔒 **Secure padlock** in your browser
+- **Valid SSL certificate** (not self-signed)
+- **Odoo interface** loading properly
+- **Automatic redirect** from HTTP to HTTPS
+
+---
