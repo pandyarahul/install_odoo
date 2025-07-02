@@ -51,3 +51,50 @@ sudo ufw status
 ```
 
 ---
+
+## 🔁 Step-by-Step Setup
+
+### 🔹 **Step 1: Install Fresh Nginx**
+
+First, update your package manager and install Nginx:
+
+```bash
+sudo apt update
+```
+
+```bash
+sudo apt install nginx -y
+```
+
+**Expected output:** You should see nginx installation completing without errors.
+
+---
+
+### 🔹 **Step 2: Start & Enable Nginx Service**
+
+Configure Nginx to start automatically and begin running:
+
+```bash
+sudo systemctl enable nginx
+```
+
+```bash
+sudo systemctl start nginx
+```
+
+**Verify the installation:**
+```bash
+sudo systemctl status nginx
+```
+
+You should see output showing `active (running)` in green text.
+
+**Test basic functionality:**
+Test if Nginx responds on port 80
+```bash
+curl -I http://localhost
+```
+
+---
+
+### 🔹 **Step 3: Create Nginx Reverse Proxy Configuration**
