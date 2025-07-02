@@ -440,8 +440,6 @@ sudo ufw status verbose
 
 ---
 
----
-
 ## 📚 Additional Resources
 
 ### 📖 **Documentation Links**
