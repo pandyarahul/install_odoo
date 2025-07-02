@@ -98,3 +98,68 @@ curl -I http://localhost
 ---
 
 ### 🔹 **Step 3: Create Nginx Reverse Proxy Configuration**
+
+Create a dedicated configuration file for your Odoo domain:
+
+⚠️ Replace `yourdomain.com` with your original domain name.
+
+```bash
+sudo vim /etc/nginx/sites-available/yourdomain.com
+```
+
+**Paste the following configuration:**
+
+```nginx
+server {
+    listen 80;
+    server_name yourdomain.com;
+    
+    # Logging configuration
+    access_log /var/log/nginx/odoo.access.log;
+    error_log /var/log/nginx/odoo.error.log;
+    
+    # Proxy timeout settings (important for Odoo)
+    proxy_read_timeout 720s;
+    proxy_connect_timeout 720s;
+    proxy_send_timeout 720s;
+    
+    # Maximum file upload size
+    client_max_body_size 200m;
+    
+    # Main location block - proxy all requests to Odoo
+    location / {
+        proxy_pass http://127.0.0.1:8069;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_redirect off;
+    }
+    
+    # Handle long polling requests (Odoo web client)
+    location /longpolling {
+        proxy_pass http://127.0.0.1:8072;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+```
+
+**Enable the site configuration:**
+```bash
+sudo ln -s /etc/nginx/sites-available/yourdomain.com /etc/nginx/sites-enabled/
+```
+
+**Test configuration syntax:**
+```bash
+sudo nginx -t
+```
+
+**Apply the configuration:**
+```bash
+sudo systemctl reload nginx
+```
+
+---
