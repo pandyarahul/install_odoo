@@ -310,7 +310,7 @@ pip install --upgrade --force-reinstall setuptools
 
 Add module on server
 ```bash
-sudo rsync -Paz --rsh "ssh -i bhaktivedanta_odoo17.pem" /home/rahul/Downloads/bma_addons ubuntu@35.154.10.30:/home/odoo18/custom_addons
+sudo rsync -Paz --rsh "ssh -i bi-odoo16.pem" /home/pandya/Downloads/bma_addons/ ubuntu@44.246.68.33:/home/biodoo16/custom_addons/
 
 cp -i /home/odoo18/custom_addons/bma_addons/ /home/odoo18/custom_addons/
 ```
