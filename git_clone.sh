@@ -5,7 +5,7 @@ BASE_URL="git@bitbucket.org:browseinfo"
 
 # List of repositories to clone
 REPOSITORIES=(
-    "accounting_addons"
+"accounting_addons"
 "extra_tools_addons"
 "extra_tools_addons2"
 "extra_tools_addons3"
