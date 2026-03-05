@@ -207,6 +207,7 @@ limit_time_real = 3600
 max_cron_threads = 1
 xmlrpc_port = 8069
 logfile = /var/log/odoo/odoo18.log
+log_level = debug
 ```
 
 Create a Log file for Odoo :
