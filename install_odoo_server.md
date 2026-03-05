@@ -187,27 +187,41 @@ Paste below content into the file :
 
 ```bash
 [options]
-; This is the password that allows database operations:
 
-admin_passwd= master@password
+admin_passwd = master@password
+
+; PostgreSQL database settings
 db_host = False
-db_name = False
 db_port = False
 db_user = odoo18
 db_password = False
-addons_path = /home/odoo18/odoo/addons,/home/odoo18/odoo/odoo/addons,/home/odoo18/enterprise/
-workers= 0
-proxy_mode = True
+db_name = False
 db_maxconn = 128
-limit_memory_soft = 2698693120
-limit_memory_hard = 31743271936
-limit_request = 81960
-limit_time_cpu = 6000
-limit_time_real = 3600
-max_cron_threads = 1
+
+; Addons paths
+addons_path = /home/odoo18/odoo/addons,/home/odoo18/odoo/odoo/addons,/home/odoo18/enterprise
+
+; Network
 xmlrpc_port = 8069
+proxy_mode = True
+
+; Worker configuration (production)
+workers = 0
+max_cron_threads = 2
+
+; Performance limits
+limit_memory_soft = 2147483648
+limit_memory_hard = 2684354560
+limit_request = 8192
+limit_time_cpu = 600
+limit_time_real = 1200
+
+; Logging
 logfile = /var/log/odoo/odoo18.log
 log_level = debug
+
+; Security
+list_db = False
 ```
 
 Create a Log file for Odoo :
