@@ -260,15 +260,34 @@ After=network.target postgresql.service
 
 [Service]
 Type=simple
-SyslogIdentifier=odoo18
-PermissionsStartOnly=true
 User=odoo18
 Group=odoo18
+
+# Odoo start command
 ExecStart=/home/odoo18/odoo/odoo-bin -c /home/odoo18/odoo18.conf
-StandardOutput=journal+console
+
+# Auto restart if service crashes
+Restart=always
+RestartSec=5
+
+# Process and file limits (important for production)
+LimitNOFILE=65535
+LimitNPROC=4096
+
+# Logging
+SyslogIdentifier=odoo18
+StandardOutput=journal
+StandardError=journal
+
+# Prevent Python buffering (better live logs)
+Environment="PYTHONUNBUFFERED=1"
+
+# Stop timeout
+TimeoutStopSec=300
 
 [Install]
 WantedBy=multi-user.target
+
 ```
 
 ## Start Stop Service :
