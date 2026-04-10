@@ -75,6 +75,12 @@ sudo npm install -g less less-plugin-clean-css
 sudo apt-get install -y node-less
 ```
 
+## Create a virtual environment :
+
+```bash
+python3.12 -m venv venv
+source venv/bin/activate
+```
 ## Add New User for Ubuntu :
 
 ```bash
@@ -221,7 +227,7 @@ logfile = /var/log/odoo/odoo18.log
 log_level = debug
 
 ; Security
-list_db = False
+list_db = True
 ```
 
 Create a Log file for Odoo :
@@ -264,7 +270,7 @@ User=odoo18
 Group=odoo18
 
 # Odoo start command
-ExecStart=/home/odoo18/odoo/odoo-bin -c /home/odoo18/odoo18.conf
+ExecStart=/home/odoo18/venv/bin/python3.12 /home/odoo18/odoo/odoo-bin -c /home/odoo19/odoo18.conf
 
 # Auto restart if service crashes
 Restart=always
