@@ -103,15 +103,14 @@ Create a dedicated configuration file for your Odoo domain:
 
 ⚠️ Replace `yourdomain.com` with your original domain name.
 
-Community  : 8069 / 8072
-Enterprise : 8079 / 8080
-MATCH THESE PORTS: nginx <-> odoo.conf
-
 ```bash
 sudo vim /etc/nginx/sites-available/yourdomain.com
 ```
 
 **Paste the following configuration:**
+###### Community  : 8069 / 8072
+###### Enterprise : 8079 / 8080
+###### MATCH THESE PORTS: nginx <-> odoo.conf
 
 ```nginx
 server {
