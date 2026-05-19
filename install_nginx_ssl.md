@@ -207,7 +207,7 @@ sudo nginx -t
 
 **Apply the configuration:**
 ```bash
-sudo systemctl reload nginx
+sudo systemctl restart nginx
 ```
 
 ---
