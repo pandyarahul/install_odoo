@@ -170,7 +170,6 @@ server {
         proxy_set_header X-Forwarded-Host $host;
     }
 
-    # Required for Odoo 16/17/18+
     location /websocket {
 
         proxy_pass http://127.0.0.1:8072;
