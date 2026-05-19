@@ -298,59 +298,6 @@ You should see:
 
 ---
 
-## ⚙️ Configuration Details
-
-### 📄 **Final Nginx Configuration**
-
-After Certbot completes, your configuration file will look like this:
-
-```nginx
-server {
-    server_name yourdomain.com;
-    
-    access_log /var/log/nginx/odoo.access.log;
-    error_log /var/log/nginx/odoo.error.log;
-    
-    proxy_read_timeout 720s;
-    proxy_connect_timeout 720s;
-    proxy_send_timeout 720s;
-    client_max_body_size 200m;
-    
-    location / {
-        proxy_pass http://127.0.0.1:8069;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-        proxy_redirect off;
-    }
-    
-    location /longpolling {
-        proxy_pass http://127.0.0.1:8072;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-    }
-
-    listen 443 ssl; # managed by Certbot
-    ssl_certificate /etc/letsencrypt/live/yourdomain.com/fullchain.pem; # managed by Certbot
-    ssl_certificate_key /etc/letsencrypt/live/yourdomain.com/privkey.pem; # managed by Certbot
-    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
-    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
-}
-
-server {
-    if ($host = yourdomain.com) {
-        return 301 https://$host$request_uri;
-    } # managed by Certbot
-
-    listen 80;
-    server_name yourdomain.com;
-    return 404; # managed by Certbot
-}
-```
-
 ### 🔧 **Odoo Configuration Adjustments**
 
 Update your Odoo configuration file (`/etc/odoo/odoo.conf`) to work properly with the proxy:
