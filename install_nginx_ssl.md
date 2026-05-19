@@ -102,6 +102,9 @@ curl -I http://localhost
 Create a dedicated configuration file for your Odoo domain:
 
 ⚠️ Replace `yourdomain.com` with your original domain name.
+    Community  : 8069 / 8072
+    Enterprise : 8079 / 8080
+    MATCH THESE PORTS: nginx <-> odoo.conf
 
 ```bash
 sudo vim /etc/nginx/sites-available/yourdomain.com
@@ -127,9 +130,6 @@ server {
         application/xml
         application/json
         application/javascript;
-
-    # Community  : 8069 / 8072
-    # Enterprise : 8079 / 8080
 
     client_max_body_size 10240m;
     proxy_read_timeout    720s;
