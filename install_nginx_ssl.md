@@ -111,38 +111,87 @@ sudo vim /etc/nginx/sites-available/yourdomain.com
 
 ```nginx
 server {
+
     listen 80;
-    server_name yourdomain.com;
-    
-    # Logging configuration
+
+    server_name yourdomain.com www.yourdomain.com;
+
     access_log /var/log/nginx/odoo.access.log;
-    error_log /var/log/nginx/odoo.error.log;
-    
-    # Proxy timeout settings (important for Odoo)
-    proxy_read_timeout 720s;
+    error_log  /var/log/nginx/odoo.error.log;
+    gzip on;
+    gzip_types
+        text/css
+        text/scss
+        text/plain
+        text/xml
+        application/xml
+        application/json
+        application/javascript;
+
+    # Community  : 8069 / 8072
+    # Enterprise : 8079 / 8080
+
+    client_max_body_size 10240m;
+    proxy_read_timeout    720s;
     proxy_connect_timeout 720s;
-    proxy_send_timeout 720s;
-    
-    # Maximum file upload size
-    client_max_body_size 200m;
-    
-    # Main location block - proxy all requests to Odoo
+    proxy_send_timeout    720s;
+    send_timeout 720s;
+
+    proxy_request_buffering off;
+
     location / {
+
         proxy_pass http://127.0.0.1:8069;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
         proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-NginX-Proxy true;
         proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-Host $host;
         proxy_redirect off;
     }
-    
-    # Handle long polling requests (Odoo web client)
+
     location /longpolling {
+
         proxy_pass http://127.0.0.1:8072;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-NginX-Proxy true;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-Host $host;
+    }
+
+    # Required for Odoo 16/17/18+
+    location /websocket {
+
+        proxy_pass http://127.0.0.1:8072;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_read_timeout 86400;
+        proxy_cache_bypass $http_upgrade;
+        ssi off;
+    }
+
+    location ~* /web/static/ {
+
+        proxy_cache_valid 200 90m;
+        proxy_buffering on;
+        expires 864000;
+        proxy_pass http://127.0.0.1:8069;
     }
 }
 ```
