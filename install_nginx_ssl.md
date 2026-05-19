@@ -116,11 +116,13 @@ sudo vim /etc/nginx/sites-available/yourdomain.com
 server {
 
     listen 80;
-
     server_name yourdomain.com www.yourdomain.com;
 
+    # LOGS
     access_log /var/log/nginx/odoo.access.log;
     error_log  /var/log/nginx/odoo.error.log;
+
+    # GZIP
     gzip on;
     gzip_types
         text/css
@@ -131,14 +133,17 @@ server {
         application/json
         application/javascript;
 
+    # GENERAL SETTINGS
+
+    # Large uploads/imports/backups
     client_max_body_size 10240m;
     proxy_read_timeout    720s;
     proxy_connect_timeout 720s;
     proxy_send_timeout    720s;
     send_timeout 720s;
-
     proxy_request_buffering off;
 
+    # MAIN ODOO APPLICATION
     location / {
 
         proxy_pass http://127.0.0.1:8069;
@@ -155,6 +160,7 @@ server {
         proxy_redirect off;
     }
 
+    # LONGPOLLING
     location /longpolling {
 
         proxy_pass http://127.0.0.1:8072;
@@ -170,6 +176,7 @@ server {
         proxy_set_header X-Forwarded-Host $host;
     }
 
+    # WEBSOCKET SUPPORT
     location /websocket {
 
         proxy_pass http://127.0.0.1:8072;
@@ -185,6 +192,7 @@ server {
         ssi off;
     }
 
+    # STATIC FILE CACHE
     location ~* /web/static/ {
 
         proxy_cache_valid 200 90m;
