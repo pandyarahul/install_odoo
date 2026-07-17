@@ -65,23 +65,45 @@ rm wkhtmltox_0.12.6-1.bionic_amd64.deb
 echo -e "\n⚙️ Creating Odoo configuration file...\n"
 cat <<EOF | sudo tee $ODOO_CONFIG > /dev/null
 [options]
+
 admin_passwd = $ADMIN_PASSWD
-db_host = False
-db_port = False
+
+list_db = True
 db_user = $ODOO_USER
 db_password = False
-addons_path = $ODOO_HOME/odoo/addons,$ODOO_HOME/odoo/odoo/addons
-logfile = $ODOO_LOG
-xmlrpc_port = $ODOO_PORT
-workers = 0
+db_maxconn = 32
+; db_name =
+; dbfilter = ^%d$
+; db_host =
+; db_port =
+
 proxy_mode = True
-db_maxconn = 128
-limit_memory_soft = 2698693120
-limit_memory_hard = 31743271936
-limit_request = 81960
-limit_time_cpu = 6000
-limit_time_real = 3600
+http_interface = 0.0.0.0
+
+; Community
+http_port = $ODOO_PORT
+longpolling_port = 8072
+
+; Enterprise (example)
+; http_port = 8079
+; longpolling_port = 8080
+
+workers = 4
 max_cron_threads = 1
+
+limit_request = 8192
+limit_time_cpu = 600
+limit_time_real = 1200
+
+limit_memory_soft = 2147483648
+limit_memory_hard = 2684354560
+
+addons_path = $ODOO_HOME/odoo/addons,$ODOO_HOME/odoo/odoo/addons
+
+logfile = $ODOO_LOG
+log_level = info
+; log_level = debug
+; server_wide_modules = base,web
 EOF
 
 echo -e "\n📁 Creating log directory...\n"
