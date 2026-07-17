@@ -195,39 +195,46 @@ Paste below content into the file :
 [options]
 
 admin_passwd = master@password
-
-; PostgreSQL database settings
-db_host = False
-db_port = False
-db_user = odoo18
+list_db = True
+db_user = odoo19
 db_password = False
-db_name = False
-db_maxconn = 128
-
-; Addons paths
-addons_path = /home/odoo18/odoo/addons,/home/odoo18/odoo/odoo/addons,/home/odoo18/enterprise
+db_maxconn = 32
+; db_host =
+; db_port =
+; dbfilter = ^%d$
 
 ; Network
-xmlrpc_port = 8069
 proxy_mode = True
+http_interface = 0.0.0.0
 
-; Worker configuration (production)
-workers = 0
-max_cron_threads = 2
+; Community
+http_port = 8069
+longpolling_port = 8072
 
-; Performance limits
-limit_memory_soft = 2147483648
-limit_memory_hard = 2684354560
+; Enterprise
+; http_port = 8079
+; longpolling_port = 8080
+
+workers = 4
+max_cron_threads = 1
+
 limit_request = 8192
 limit_time_cpu = 600
 limit_time_real = 1200
+limit_memory_soft = 2147483648
+limit_memory_hard = 2684354560
+
+addons_path = /home/odoo19/odoo/addons,/home/odoo19/odoo/odoo/addons,/home/odoo19/enterprise
 
 ; Logging
-logfile = /var/log/odoo/odoo18.log
-log_level = debug
+logfile = /var/log/odoo/odoo19.log
+log_level = info
+; log_level = debug
 
-; Security
-list_db = True
+; Development
+; dev_mode = reload,qweb,werkzeug,xml
+; without_demo = all
+; server_wide_modules = base,web
 ```
 
 Create a Log file for Odoo :
