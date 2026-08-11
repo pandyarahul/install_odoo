@@ -256,6 +256,9 @@ Check Server logs
 ```bash
 sudo tail -f /var/log/odoo/odoo18.log
 ```
+```bash
+sudo journalctl -u odoo18e -n 100 -f --no-pager
+```
 
 ## Create Service File :
 
